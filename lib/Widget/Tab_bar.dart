@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CapsuleTabBar extends StatelessWidget {
+import '../constants/color.dart';
+
+class CustomTab extends StatelessWidget {
   final List<String> tabs;
   final int selectedTabIndex;
   final Function(int) onTabSelected;
 
-  const CapsuleTabBar({
+  const CustomTab({
     super.key,
     required this.tabs,
     required this.selectedTabIndex,
@@ -16,37 +18,39 @@ class CapsuleTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: const Color(0xFF23313F),
-      padding: const EdgeInsets.symmetric(vertical: 14),
+      color: AppColors.tabBarBackground,
+      padding:  EdgeInsets.symmetric(vertical: 14),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
+        physics:  BouncingScrollPhysics(),
         child: Row(
-          children: List.generate(tabs.length, (i) {
-            final bool selected = selectedTabIndex == i;
+          children: List.generate(tabs.length, (index) {
+            final bool isSelected = selectedTabIndex == index;
+
             return Padding(
-              padding: EdgeInsets.only(left: i == 0 ? 16 : 10),
+              padding: EdgeInsets.only(left: index == 0 ? 16 : 10),
               child: GestureDetector(
-                onTap: () => onTabSelected(i),
+                onTap: () => onTabSelected(index),
                 child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 170),
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                  duration:  Duration(milliseconds: 170),
+                  padding:  EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                   decoration: BoxDecoration(
-                    color: selected
-                        ? const Color(0xFF233143)
+                    color: isSelected
+                        ? AppColors.tabSelectedColor
                         : Colors.transparent,
                     border: Border.all(
-                      color: selected
-                          ? const Color(0xFF23A9F9)
-                          : Colors.white,
+                      color: isSelected
+                          ? AppColors.tabBorderSelected
+                          : AppColors.tabBorderUnselected,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   child: Text(
-                    tabs[i],
-                    style: const TextStyle(
-                      color: Colors.white,
+                    tabs[index],
+                    style:  TextStyle(
+                      fontFamily: 'Arial',
+                      color: AppColors.textColor,
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),

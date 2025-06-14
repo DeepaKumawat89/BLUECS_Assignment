@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../constants/color.dart';
 
-class CustomRowWidget extends StatelessWidget {
- const  CustomRowWidget({super.key});
+class SecondCustomRowWidget extends StatelessWidget {
+  const  SecondCustomRowWidget({super.key});
 
 
   // Common text style for labels
@@ -68,18 +68,20 @@ class CustomRowWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          //  Avatars + Comment Count + Icon
+          //  Group Icon + Like Count + Icon
+
           Row(
             children: [
-              Padding(
-                padding:  EdgeInsets.only(top: 4),
-                child: _buildAvatarStack(),
-              ),
-               SizedBox(width: 2),
-               Text('310', style: _textStyle),
-               SizedBox(width: 2),
               SvgPicture.asset(
-                'assets/icons/Comment.svg',
+                'assets/icons/Group 1321318638.svg',
+                width: 22,
+                height: 22,
+              ),
+              SizedBox(width: 2),
+              Text('5k+', style: _textStyle),
+              SizedBox(width: 2),
+              SvgPicture.asset(
+                'assets/icons/Like.svg',
                 width: 24,
                 height: 24,
                 color: AppColors.iconColor,
@@ -89,19 +91,19 @@ class CustomRowWidget extends StatelessWidget {
 
           _divider(),
 
-          //  Group Icon + Like Count + Icon
+          //  Avatars + Comment Count + Icon
+
           Row(
             children: [
-              SvgPicture.asset(
-                'assets/icons/Group 1321318638.svg',
-                width: 22,
-                height: 22,
+              Padding(
+                padding:  EdgeInsets.only(top: 4),
+                child: _buildAvatarStack(),
               ),
-               SizedBox(width: 2),
-               Text('5k+', style: _textStyle),
-               SizedBox(width: 2),
+              SizedBox(width: 2),
+              Text('310', style: _textStyle),
+              SizedBox(width: 2),
               SvgPicture.asset(
-                'assets/icons/Like.svg',
+                'assets/icons/Comment.svg',
                 width: 24,
                 height: 24,
                 color: AppColors.iconColor,
@@ -114,8 +116,8 @@ class CustomRowWidget extends StatelessWidget {
           // Share Count + Share Icon
           Row(
             children: [
-               Text('50', style: _textStyle),
-               SizedBox(width: 1),
+              Text('50', style: _textStyle),
+              SizedBox(width: 1),
               SvgPicture.asset(
                 'assets/icons/mdi-light_share.svg',
                 width: 24,

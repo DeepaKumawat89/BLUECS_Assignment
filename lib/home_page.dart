@@ -1,245 +1,10 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-// import 'dart:math' as math;
-//
-// import 'Widget/Tab_bar.dart';
-// import 'Widget/custom_bottom_nav.dart';
-// import 'Widget/custom_row_widget.dart';
-//
-// class HomePage extends StatefulWidget {
-//   const HomePage({super.key});
-//
-//   @override
-//   State<HomePage> createState() => _HomePageState();
-// }
-//
-// class _HomePageState extends State<HomePage> {
-//   int _selectedIndex = 0;
-//
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-//
-//   Widget _svgIcon(String path, {double size = 24}) {
-//     return SvgPicture.asset(path, height: size, width: size);
-//   }
-//
-//
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final List<Widget> pages = [
-//       SingleChildScrollView(
-//         padding: const EdgeInsets.all(16.0),
-//         child: Column(
-//           children: [
-//             Stack(
-//               clipBehavior: Clip.none,
-//               children: [
-//                 Container(
-//                   width: 358,
-//                   height: 430,
-//                   margin: const EdgeInsets.symmetric(vertical: 10),
-//                   decoration: BoxDecoration(
-//                     color: const Color(0xFF1C252D),
-//                     borderRadius: BorderRadius.circular(10),
-//                     border: const Border(
-//                       left: BorderSide(color: Colors.white12, width: 1),
-//                       right: BorderSide(color: Colors.white12, width: 1),
-//                     ),
-//                   ),
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       ClipRRect(
-//                         borderRadius: const BorderRadius.only(
-//                           topLeft: Radius.circular(10),
-//                           topRight: Radius.circular(10),
-//                         ),
-//                         child: Image.asset(
-//                           'assets/icons/AI.jpg',
-//                           width: 358,
-//                           height: 215, // top half only
-//                           fit: BoxFit.cover,
-//                         ),
-//                       ),
-//                       const SizedBox(height: 12),
-//                       Padding(
-//                         padding: const EdgeInsets.symmetric(horizontal: 14),
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             const Row(
-//                               children: [
-//                                 Text("5 days ago", style: TextStyle(color: Colors.white60, fontSize: 13)),
-//                                 Spacer(),
-//                                 Icon(Icons.remove_red_eye, color: Colors.white24, size: 18),
-//                                 SizedBox(width: 4),
-//                                 Text("25k", style: TextStyle(color: Colors.white38, fontSize: 13)),
-//                               ],
-//                             ),
-//                             const SizedBox(height: 7),
-//                             const Text(
-//                               "Top 10 AI Tools You Should Know in 2025",
-//                               style: TextStyle(
-//                                 color: Colors.white,
-//                                 fontWeight: FontWeight.w700,
-//                                 fontSize: 17,
-//                               ),
-//                             ),
-//                             const SizedBox(height: 4),
-//                             Text(
-//                               "Stay Ahead with These Game-Changing AI Tools",
-//                               style: TextStyle(color: Colors.white, fontSize: 12),
-//                               maxLines: 2,
-//                               overflow: TextOverflow.ellipsis,
-//                             ),
-//                             const SizedBox(height: 14),
-//                             Row(
-//                               children: [
-//                                 // SVG on the left
-//                                 CircleAvatar(
-//                                   radius: 20,
-//                                   backgroundColor: Colors.white10,
-//                                   child: ClipOval(
-//                                     child: Image.asset(
-//                                       'assets/icons/lorem.png', // Replace with your PNG path
-//                                       width: 42,
-//                                       height: 42,
-//                                     ),
-//                                   ),
-//                                 ),
-//                                 const SizedBox(width: 8),
-//
-//                                 // Name and subtitle column
-//                                 Column(
-//                                   crossAxisAlignment: CrossAxisAlignment.start,
-//                                   children: const [
-//                                     Text(
-//                                       "TechSavvy",
-//                                       style: TextStyle(
-//                                         color: Colors.white,
-//                                         fontSize: 20,
-//                                         fontWeight: FontWeight.w700,
-//                                       ),
-//                                     ),
-//                                     SizedBox(height: 2),
-//                                     Text(
-//                                       "Content Creator", // or any subtitle
-//                                       style: TextStyle(
-//                                         color: Colors.white,
-//                                         fontWeight: FontWeight.w400,
-//                                         fontSize: 10,
-//                                       ),
-//                                     ),
-//                                   ],
-//                                 ),
-//
-//                                 const Spacer(),
-//                                 // SVG on the right
-//                                 SvgPicture.asset(
-//                                   'assets/icons/block.svg', // replace with your asset
-//                                   width: 20,
-//                                   height: 20,
-//                                   color: Colors.redAccent,
-//                                 ),
-//                               ],
-//                             ),
-//                             const SizedBox(height: 20),
-//                           ],
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//                 Positioned(
-//                   bottom: -24,
-//                   left: (358 - 325) / 2,
-//                   child:  CustomRowWidget(),
-//                 ),
-//               ],
-//             ),
-//             const SizedBox(height: 40), // space after custom row
-//           ],
-//         ),
-//       ),
-//
-//       const Center(child: Text('Search Page', style: TextStyle(color: Colors.white))),
-//       const Center(child: Text('Add Page', style: TextStyle(color: Colors.white))),
-//       const Center(child: Text('Alerts Page', style: TextStyle(color: Colors.white))),
-//       const Center(child: Text('Profile Page', style: TextStyle(color: Colors.white))),
-//     ];
-//
-//     return Scaffold(
-//       backgroundColor: const Color(0xFF23313F),
-//       appBar: AppBar(
-//         backgroundColor: const Color(0xFF161F28),
-//         toolbarHeight: 70,
-//         title: Row(
-//           children: [
-//             _svgIcon('assets/icons/frame.svg', size: 28),
-//             const SizedBox(width: 10),
-//             Expanded(
-//               child: Container(
-//                 height: 40,
-//                 padding: const EdgeInsets.symmetric(horizontal: 12),
-//                 decoration: BoxDecoration(
-//                   color: const Color(0xFF23313F),
-//                   borderRadius: BorderRadius.circular(25),
-//                 ),
-//                 child: Row(
-//                   children: const [
-//                     Icon(Icons.search, color: Colors.white70, size: 20),
-//                     SizedBox(width: 8),
-//                     Expanded(
-//                       child: TextField(
-//                         style: TextStyle(color: Colors.white),
-//                         decoration: InputDecoration(
-//                           hintText: 'Search',
-//                           hintStyle: TextStyle(color: Colors.white70),
-//                           border: InputBorder.none,
-//                           isDense: true,
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//             const SizedBox(width: 10),
-//             _svgIcon('assets/icons/map-73.svg', size: 28),
-//             const SizedBox(width: 16),
-//             _svgIcon('assets/icons/notification.svg', size: 28),
-//           ],
-//         ),
-//       ),
-//       body: Column(
-//         children: [
-//           CapsuleTabBar(
-//             tabs: ['All Posts', 'Videos', 'Short Videos', 'Nearby'],
-//             selectedTabIndex: _selectedIndex,
-//             onTabSelected: _onItemTapped,
-//           ),
-//           Expanded(child: pages[_selectedIndex]),
-//         ],
-//       ),
-//       bottomNavigationBar: CustomBottomNavigationBar(
-//         selectedIndex: _selectedIndex,
-//         onItemTapped: _onItemTapped,
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:math' as math;
-
+import 'Widget/PollCardWidget.dart';
 import 'Widget/Tab_bar.dart';
+import 'Widget/custom_app_bar.dart';
 import 'Widget/custom_bottom_nav.dart';
-import 'Widget/custom_row_widget.dart';
+import 'Widget/post_card_widget.dart';
+import 'constants/color.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -249,18 +14,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+  int _selectedBottomNavIndex = 0; // For bottom nav
+  int _selectedTabIndex = 0; // For capsule tab
 
-  void _onItemTapped(int index) {
+  void _onBottomNavTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _selectedBottomNavIndex = index;
     });
   }
 
-  Widget _svgIcon(String path, {double size = 24}) {
-    return SvgPicture.asset(path, height: size, width: size);
+  void _onTabSelected(int index) {
+    setState(() {
+      _selectedTabIndex = index;
+    });
   }
 
+  // Dummy post data
   final List<Map<String, String>> dummyData = [
     {
       'image': 'assets/icons/AI.jpg',
@@ -269,250 +38,131 @@ class _HomePageState extends State<HomePage> {
       'author': 'TechSavvy',
       'role': 'Content Creator',
     },
+
     {
-      'image': 'assets/icons/AI.jpg',
-      'title': 'Future of Flutter Development',
-      'subtitle': 'What to expect in the next version',
-      'author': 'DevGuru',
-      'role': 'Mobile Dev',
+      'image': 'assets/images/Robot.png',
+      'title': 'Top 10 AI Tools You Should Know in 2025',
+      'subtitle': 'Stay Ahead with These Game-Changing AI Tools',
+      'author': 'TechSavvy',
+      'role': 'Content Creator',
     },
     {
-      'image': 'assets/icons/AI.jpg',
-      'title': 'Design Trends of 2025',
-      'subtitle': 'UI/UX predictions for the future',
-      'author': 'UXMaster',
-      'role': 'Designer',
+      'image': 'assets/images/people.png',
+      'title': 'Top 10 AI Tools You Should Know in 2025',
+      'subtitle': 'Stay Ahead with These Game-Changing AI Tools',
+      'author': 'TechSavvy',
+      'role': 'Content Creator',
     },
     {
-      'image': 'assets/icons/AI.jpg',
-      'title': 'How to Stay Productive as a Developer',
-      'subtitle': 'Top tools and tips',
-      'author': 'CodeNinja',
-      'role': 'Productivity Coach',
+      'image': 'assets/images/Discover.png',
+      'title': 'Top 10 AI Tools You Should Know in 2025',
+      'subtitle': 'Stay Ahead with These Game-Changing AI Tools',
+      'author': 'TechSavvy',
+      'role': 'Content Creator',
     },
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    final List<Widget> pages = [
-      SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            for (var data in dummyData) ...[
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    width: 358,
-                    height: 430,
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1C252D),
-                      borderRadius: BorderRadius.circular(10),
-                      border: const Border(
-                        left: BorderSide(color: Colors.white12, width: 1),
-                        right: BorderSide(color: Colors.white12, width: 1),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                          ),
-                          child: Image.asset(
-                            data['image']!,
-                            width: 358,
-                            height: 215,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Row(
-                                children: [
-                                  Text("5 days ago",
-                                      style: TextStyle(
-                                          color: Colors.white60, fontSize: 13)),
-                                  Spacer(),
-                                  Icon(Icons.remove_red_eye,
-                                      color: Colors.white24, size: 18),
-                                  SizedBox(width: 4),
-                                  Text("25k",
-                                      style: TextStyle(
-                                          color: Colors.white38, fontSize: 13)),
-                                ],
-                              ),
-                              const SizedBox(height: 7),
-                              Text(
-                                data['title']!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                data['subtitle']!,
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 12),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              const SizedBox(height: 14),
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: Colors.white10,
-                                    child: ClipOval(
-                                      child: Image.asset(
-                                        'assets/icons/lorem.png',
-                                        width: 42,
-                                        height: 42,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        data['author']!,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 2),
-                                      Text(
-                                        data['role']!,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 10,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const Spacer(),
-                                  SvgPicture.asset(
-                                    'assets/icons/block.svg',
-                                    width: 20,
-                                    height: 20,
-                                    color: Colors.redAccent,
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 20),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    bottom: -24,
-                    left: (358 - 325) / 2,
-                    child: const CustomRowWidget(),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
-            ],
-
-            // 👇 Optional Additional Page or Section
-            Container(
-              width: 358,
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.only(bottom: 40),
-              decoration: BoxDecoration(
-                color: const Color(0xFF2B3A47),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Text(
-                'Thanks for exploring the feed!',
-                style: TextStyle(color: Colors.white70, fontSize: 16),
-              ),
-            ),
-          ],
-        ),
+  // Horizontal image builder
+  Widget _buildImageCard(String path) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(
+        path,
+        width: 98,
+        height: 181,
+        fit: BoxFit.cover,
       ),
-      const Center(child: Text('Search Page', style: TextStyle(color: Colors.white))),
-      const Center(child: Text('Add Page', style: TextStyle(color: Colors.white))),
-      const Center(child: Text('Alerts Page', style: TextStyle(color: Colors.white))),
-      const Center(child: Text('Profile Page', style: TextStyle(color: Colors.white))),
-    ];
+    );
+  }
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF23313F),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF161F28),
-        toolbarHeight: 70,
-        title: Row(
+  // Capsule tab content
+  Widget _buildTabContent() {
+    switch (_selectedTabIndex) {
+      case 0: // All Posts
+        return Column(
           children: [
-            _svgIcon('assets/icons/frame.svg', size: 28),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Container(
-                height: 40,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF23313F),
-                  borderRadius: BorderRadius.circular(25),
-                ),
+            for (var data in dummyData) PostCardWidget(data: data),
+             PollCardWidget(),
+             SizedBox(height: 40),
+            SizedBox(
+              height: 181,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: const [
-                    Icon(Icons.search, color: Colors.white70, size: 20),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: TextField(
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          hintText: 'Search',
-                          hintStyle: TextStyle(color: Colors.white70),
-                          border: InputBorder.none,
-                          isDense: true,
-                        ),
-                      ),
-                    ),
+                  children: [
+                    _buildImageCard('assets/images/image.jpg'),
+                     SizedBox(width: 4),
+                    _buildImageCard('assets/images/image1.jpg'),
+                     SizedBox(width: 4),
+                    _buildImageCard('assets/images/image1.jpg'),
+                     SizedBox(width: 4),
+                    _buildImageCard('assets/images/image1.jpg'),
                   ],
                 ),
               ),
             ),
-            const SizedBox(width: 10),
-            _svgIcon('assets/icons/map-73.svg', size: 28),
-            const SizedBox(width: 16),
-            _svgIcon('assets/icons/notification.svg', size: 28),
           ],
-        ),
-      ),
-      body: Column(
-        children: [
-          CapsuleTabBar(
-            tabs: ['All Posts', 'Videos', 'Short Videos', 'Nearby'],
-            selectedTabIndex: _selectedIndex,
-            onTabSelected: _onItemTapped,
+        );
+      case 1:
+        return const Center(
+          child: Text(
+            'Videos Tab Content',
+            style: TextStyle(color: Colors.white, fontSize: 16),
           ),
-          Expanded(child: pages[_selectedIndex]),
-        ],
-      ),
+        );
+      case 2:
+        return const Center(
+          child: Text(
+            'Short Videos Tab Content',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        );
+      case 3:
+        return const Center(
+          child: Text(
+            'Nearby Tab Content',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        );
+      default:
+        return const SizedBox();
+    }
+  }
+
+  // Bottom nav pages
+  List<Widget> get _bottomPages => [
+    // Home Page with tabs
+    Column(
+      children: [
+        CustomTab(
+          tabs: ['All Posts', 'Videos', 'Short Videos', 'Nearby'],
+          selectedTabIndex: _selectedTabIndex,
+          onTabSelected: _onTabSelected,
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: _buildTabContent(),
+          ),
+        ),
+      ],
+    ),
+    const Center(child: Text('Jobs Page', style: TextStyle(color: Colors.white))),
+    const Center(child: Text('Stores Page', style: TextStyle(color: Colors.white))),
+    const Center(child: Text('Chats Page', style: TextStyle(color: Colors.white))),
+    const Center(child: Text('Profile Page', style: TextStyle(color: Colors.white))),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: CustomAppBar(),
+      body: _bottomPages[_selectedBottomNavIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
+        selectedIndex: _selectedBottomNavIndex,
+        onItemTapped: _onBottomNavTapped,
       ),
     );
   }
 }
-
-
